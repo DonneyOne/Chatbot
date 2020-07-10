@@ -1,0 +1,265 @@
+#this is where actions and intents are defined, as well as slots (how user input variables are declared and stored), as well as where the responses from the bot
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - timetable_date
+  - timetable_time
+  - find_room
+  - who
+  - find_lecturer
+  - events
+  - modules
+  - schools
+  - rooms
+  - address
+  - RoomLocation
+  - LecturerOffice
+  - LecturerEmail
+  - PersonalTutor
+  - NotUnderstood
+  - Exam
+  - Assessment
+  - SendingEmail
+  - receiver_entry
+  - subject_entry
+  - body_entry
+  - directions
+
+
+forms:
+  - email_form
+
+
+actions:
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_goodbye
+  - utter_timetable
+  - utter_empty_time
+  - utter_find_room
+  - utter_who
+  - utter_lecturer
+  - utter_events
+  - utter_modules
+  - utter_schools
+  - utter_rooms
+  - utter_where
+  - utter_help
+  - utter_office
+  - utter_email
+  - utter_pt
+  - utter_exam
+  - utter_assessment
+  - utter_email_sent
+  - utter_ask_receiver
+  - utter_ask_subject
+  - utter_ask_body
+  - utter_directions
+
+  - action_send_email
+  - аction_exam
+  - action_assessment
+  - аction_pt
+  - аction_lecturer_email
+  - action_office
+  - action_FindRoom
+  - action_where
+  - action_rooms
+  - action_schools
+  - action_modules
+  - action_show_lecturers
+  - action_show_timetable
+  - action_SU
+  - action_reset_slot
+  - action_directions
+
+entities:
+  - subject
+  - body
+  - receiver
+  - date
+  - time
+  - room
+  - timetable
+  - lecturers
+  - events
+  - modules
+  - schools
+  - rooms
+  - address
+  - roomlocation
+  - email
+  - office
+  - PTutor
+  - exam
+  - assessment
+
+slots:
+  date:
+    type: categorical
+    initial_value: today
+    values:
+      - today
+      - tomorrow
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+
+  TimeTable:
+    type: text
+  
+  Lecturers:
+    type: text
+
+  Lecturer_name:
+    type: text
+
+  Events:
+    type: text
+
+  Modules:
+    type: text
+
+  Schools:
+    type: text
+
+  Rooms: 
+    type: text
+
+  Address:
+    type: text
+
+  Address_name:
+    type: text
+
+  Direction:
+    type: text
+
+  Direction_name:
+    type: text
+
+  Room_location:
+    type: text
+
+  Room_location_name:
+    type: text
+
+  Office:
+    type: text
+
+  Email:
+    type: text
+
+  PT:
+    type: text
+
+  Exam:
+    type: text
+
+  Exam_name:
+    type: text
+
+  Assessment:
+    type: text
+
+  Assessment_name:
+    type: text
+
+  body:
+    type: unfeaturized
+
+  subject:
+    type: unfeaturized
+
+  receiver:
+    type: unfeaturized
+
+responses:
+  utter_greet:
+  - text: "Hi, How can I help you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_help:
+  - text: "Sorry, I did not understand you. Can I get anything for you?"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_timetable:
+  - text: "Your timetable for {date} is {TimeTable}"
+
+  utter_lecturer:
+  - text: "Lecturer info: </br> {Lecturers}"
+
+  utter_events:
+  - text: "Upcoming Events: </br> {Events}"
+
+  utter_modules:
+  - text: "Your current modules are: </br> {Modules}"
+
+  utter_ask_subject:
+  - text: "What would be the subject of the email?"
+
+  utter_ask_body:
+  - text: "What would be the message in the body of the email?"
+
+  utter_ask_receiver:
+  - text: "Who is going to be the reciever of the email?"
+
+  utter_email_sent:
+  - text: "Email sent successfully!"
+  
+  utter_schools:
+  - text: "Schools {Schools}"
+
+  utter_exam:
+  - text: "The exam date for {Exam_name} is: {Exam}"
+
+  utter_assessment:
+  - text: "The assessment date for {Assessment_name} is: {Assessment}"
+
+  utter_rooms:
+  - text: "Rooms {Rooms}"
+
+  utter_email:
+  - text: "Email of the {Lecturer_name} is {Email}"
+
+  utter_pt:
+  - text: "Your Personal tutor is: {PT} "
+
+  utter_find_room:
+  - text: "Room: {Room_location_name} is found in {Room_location}"
+
+  utter_who:
+  - text: "I am the Cardiff University Chatbot, how can I help you?"
+
+  utter_where:
+  - text: "The Address of {Address_name} is: {Address}"
+
+  utter_directions:
+  - text: 'Here are the directions to <a href="{Direction}" target="_blank">{Direction_name}</a>, please click the link to open a google maps'
+
+  utter_office:
+  - text: "The Office of {Lecturer_name} is {Office}"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
